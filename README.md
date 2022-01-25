@@ -12,4 +12,4 @@ execute png_to_ASCII and them :
 2. specify a directory to save text file
 3. specify what characters configuration yo you eant to use
 4. (optional) width and height to rescale image. Default the image will be converter with image original size
-![](https://github.com/ParriCode/png_to_ASCII/edit/main/images/tux.png)
+![](https://github.com/ParriCode/png_to_ASCII/edit/main/Debug/images/tux.png)

@@ -3,7 +3,6 @@
  Name        : png_to_ASCII.c
  Author      : theparri@protonmail.com
  Version     : 1.0
- Description : Hello World in C, Ansi-style
  ============================================================================
  */
 

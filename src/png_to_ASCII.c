@@ -19,7 +19,7 @@
 int resize(int **matrix,int height, int width,int **newmatrix,int newheight, int newwidth);
 void abort_(const char * s, ...);
 struct frame{
-	int height;				//size of image on axis Y and axis X
+	int height;			//size of image on axis Y and axis X
 	int width;   	  		//size of image on axis X
 	int **matrix;			//Pointer that contains the value of each pixel
 	char *picture;			//Array that contains the image transformed
@@ -99,8 +99,8 @@ int main(int argc,char *argv[]){
 /* ===================================================
    READ PNG FILE
    ===================================================*/
-    png_bytep * row_pointers;
-    png_structp png_ptr;
+	png_bytep * row_pointers;
+	png_structp png_ptr;
 	png_infop info_ptr;
 	char header[8];
 	int color_type;
@@ -130,12 +130,12 @@ int main(int argc,char *argv[]){
 
 	img.width = png_get_image_width(png_ptr, info_ptr);    // get image width file
 	img.height = png_get_image_height(png_ptr, info_ptr);  // get image height file
-    color_type = png_get_color_type(png_ptr, info_ptr);
-    printf("\ntype = %d\n",color_type);
+	color_type = png_get_color_type(png_ptr, info_ptr);
+	printf("\ntype = %d\n",color_type);
 	png_read_update_info(png_ptr, info_ptr);
 
 	if (setjmp(png_jmpbuf(png_ptr)))
-			abort_("[read_png_file] Error during read_image");
+		abort_("[read_png_file] Error during read_image");
 	/*=============================================================================*/
 	//Set img.matrix 2D array memory size
 	/*=============================================================================*/
@@ -184,23 +184,23 @@ int main(int argc,char *argv[]){
 			}
 		}
 	}
-	img.picture = (char *)malloc((img.width+10)*(img.height+10)*sizeof(char[4]));        //dispose memory for ascii string
+	img.picture = (char *)malloc((img.width+10)*(img.height+10)*sizeof(char[4]));   //dispose memory for ascii string
 
 	printf("sizex = %d\n",img.width);
 	printf("sizey = %d\n",img.height);
-	/* =========================================================
-	   RESIZE IMAGE
-	   ==========================================================|*/
-	if(bool_resize == true){    												//if bool resize is true the image will be resized
+/* =========================================================
+   RESIZE IMAGE
+   ==========================================================|*/
+	if(bool_resize == true){    						       //if bool resize is true the image will be resized
 		int **newmatrix;
-		newmatrix = (int**)malloc(newwidth*sizeof(int *));          			 //dispose the memory for the new image size
+		newmatrix = (int**)malloc(newwidth*sizeof(int *));          	       //dispose the memory for the new image size
 		for(int i = 0;i < newwidth;i++){
 			newmatrix[i] = (int*)malloc(newheight*sizeof(int));
 		}
 		resize(img.matrix,img.width,img.height,newmatrix,newwidth,newheight);  //image resizing algorithm
-		img.width = newwidth;													 //convert image size
-		img.height = newheight;                                                      //free matrix memory
-		img.matrix = (int**)malloc(img.width*sizeof(int *)); 					 //Return to set img.matrix 2D array memory size
+		img.width = newwidth;						       //convert image size
+		img.height = newheight;                                                //free matrix memory
+		img.matrix = (int**)malloc(img.width*sizeof(int *)); 		       //Return to set img.matrix 2D array memory size
 		for(int i = 0;i < img.width;i++){
 			img.matrix[i] = (int*)malloc(img.height*sizeof(int));
 		}
